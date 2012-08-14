@@ -1,0 +1,43 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* Basic jCoverflip CSS */
+.ui-jcoverflip {
+position: relative;
+}
+.ui-jcoverflip--item {
+position: absolute;
+display: block;
+}
+/* Basic sample CSS */
+#slideshow {
+height: 50px;
+width: 230px;
+margin-bottom: 50px;
+margin-left: 200px;
+border: 2;
+
+}
+#slideshow .ui-jcoverflip--title {
+position: absolute;
+bottom: -30px;
+width: 100%;
+text-align: center;
+color: #555;
+}
+#slideshow img {
+display: block;
+border: 0;
+outline: none;
+}
+#slideshow a {
+outline: none;
+}
+
+ul,
+ul li {
+margin: 0;
+padding: 0;
+display: block;
+list-style-type: none;
+}
