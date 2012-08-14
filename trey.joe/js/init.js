@@ -1,3 +1,7 @@
-$(document).ready(function() { 
-	$('#slideshow').jcoverflip();
+// JavaScript Document
+$(document).ready(function()
+{
+	$('#slider').nivoSlider({
+    controlNavThumbs:true
+});
 });
