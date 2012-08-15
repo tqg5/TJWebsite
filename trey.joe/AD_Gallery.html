@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<link href="css/jcoverflip.css" rel="stylesheet" type="text/css" />
+<link href="css/default.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/ad-gallery.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="./jq/AD_Gallery_1.2.7/lib/jquery.ad-gallery.js"></script>
+<script type="text/javascript">
+
+  $(function() {
+    $('img.image1').data('ad-desc', 'Whoa! This description is set through elm.data("ad-desc") instead of using the longdesc attribute.<br>And it contains <strong>H</strong>ow <strong>T</strong>o <strong>M</strong>eet <strong>L</strong>adies... <em>What?</em> That aint what HTML stands for? Man...');
+    $('img.image1').data('ad-title', 'Title through $.data');
+    $('img.image4').data('ad-desc', 'This image is wider than the wrapper, so it has been scaled down');
+    $('img.image5').data('ad-desc', 'This image is higher than the wrapper, so it has been scaled down');
+    var galleries = $('.ad-gallery').adGallery();
+    $('#switch-effect').change(
+      function() {
+        galleries[0].settings.effect = $(this).val();
+        return false;
+      }
+    );
+    $('#toggle-slideshow').click(
+      function() {
+        galleries[0].slideshow.toggle();
+        return false;
+      }
+    );
+    galleries[0].addAnimation('wild',
+      function(img_container, direction, desc) {
+        var current_left = parseInt(img_container.css('left'), 10);
+        var current_top = parseInt(img_container.css('top'), 10);
+        if(direction == 'left') {
+          var old_image_left = '-'+ this.image_wrapper_width +'px';
+          img_container.css('left',this.image_wrapper_width +'px');
+          var old_image_top = '-'+ this.image_wrapper_height +'px';
+          img_container.css('top', this.image_wrapper_height +'px');
+        } else {
+          var old_image_left = this.image_wrapper_width +'px';
+          img_container.css('left','-'+ this.image_wrapper_width +'px');
+          var old_image_top = this.image_wrapper_height +'px';
+          img_container.css('top', '-'+ this.image_wrapper_height +'px');
+        };
+        if(desc) {
+          desc.css('bottom', '-'+ desc[0].offsetHeight +'px');
+          desc.animate({bottom: 0}, this.settings.animation_speed * 2);
+        };
+        img_container.css('opacity', 0);
+        return {old_image: {left: old_image_left, top: old_image_top, opacity: 0},
+                new_image: {left: current_left, top: current_top, opacity: 1},
+                easing: 'easeInBounce',
+                speed: 2500};
+      }
+    );
+  });
+  function debug(str) {
+    if(window.console && window.console.log && jQuery.browser.mozilla) {
+      console.log(str);
+    } else {
+      $('#debug').show().val($('#debug').val() + str +'\n');
+    }
+  }
+</script>
+<script type="text/css">
+
+  #gallery {
+    padding: 30px;
+    background: #e1eef5;
+  }
+  #comment-form {
+    width: 100%;
+  }
+  #error {
+    display: none;
+    background: #FFF;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    width: 500px;
+    height: 300px;
+    padding: 10px;
+    border: 1px solid #CCC;
+  }
+ </script>
+<script type="text/javascript" src="./js/ad_gallery_init.js"></script>
+ 
+</head>
+
+<body>
+<div id="container"> 
+  <header id="home">
+    <div id="logo">
+    <img src="images/logo.jpg"/>
+    <h1 style="color:#656666; margin-top:5px; margin-left:45px;">T<span style="color:#7AAC37">&</span><span style="color:#656666">J</span></h1>
+    <p style="color:#787878; margin-left:45px; margin-top:5px;">DESIGN STUDIO</p>
+    </div>
+    <!-- end #logo -->
+    <nav class="primary">
+    <ul class="noBullet">
+    <li>
+    <a href="#home">HOME</a>
+    </li>
+    <li>
+    <a href="#aboutUs">ABOUT US</a>
+    </li>
+    <li>
+    <a href="#works">WORKS</a>
+    </li>
+    <li>
+    <a href="#contact">CONTACT</a>
+    </li>
+    </ul>
+    </nav>
+  </header>
+  <section  id="slideshowSection">
+	<div class="ad-gallery">
+      <div class="ad-image-wrapper">
+      </div>
+      <div class="ad-controls">
+      </div>
+      <div class="ad-nav">
+        <div class="ad-thumbs">
+          <ul class="ad-thumb-list">
+            <li>
+              <a href="images/cars.png">
+                <img src="images/cars.png" title="Title for 1.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="images/cars.png">
+                <img src="images/cars.png" longdesc="http://www.example.com" alt="Description of the image 2.jpg">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="topDiv"><a href="#home" class="topButton blockCenter">Top</a></div>
+  </section>
+  <!-- section1 slideShow -->
+  <section  id="webContent">
+  <h1>Web Content / Slideshow Content </h1>
+  <!--
+    <article>
+      <header class="article_header noBorder">
+        <h1>About this website and it's contents</h1>
+      </header>
+      <footer class="article_footer noBorder"></footer>
+    </article>
+    -->
+    <aside class="floatRight">
+      <h1>Tweets</h1>
+    </aside>
+    <!-- latestTweets <footer></footer>-->
+    <div class="topDiv"><a href="#home" class="topButton blockCenter">Top</a></div>
+  </section>
+  <!-- section2 webDesign and Development -->
+  <section id="#aboutUs">
+  <h1>About Us </h1>
+  <!--
+    <article>
+      <header class="article_header noBorder">
+        <h1>A FEW WORDS ABOUT US</h1>
+      </header>
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris. </p>
+      <ul>
+      <li>
+      <figure>
+      </figure>
+      <blockquote>"Phasellus porta. Fusce suscipit varius mi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."</blockquote>
+      </li>
+      <li>
+      <figure>
+      </figure>
+      <blockquote>"Phasellus porta. Fusce suscipit varius mi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."</blockquote>
+      </li>
+      </ul>
+      
+    </article>
+    -->
+    <aside class="floatRight">
+      <h1>Skills & Awards</h1>
+    </aside>
+    <!--skills&awards-->
+    <div class="topDiv"><a href="#home" class="topButton blockCenter">Top</a></div>
+  </section>
+  <!-- wordsAboutUs -->
+  <section id="#works">
+  <h1>Works </h1>
+    <article>
+      <header class="article_header noBorder">
+      </header>
+      <footer class="article_footer noBorder"></footer>
+    </article>
+    <div class="topDiv"><a href="#home" class="topButton blockCenter">Top</a></div>
+  </section>
+  <!-- works -->
+  <section id="#contact"> 
+  <h1>Contact </h1>
+  <article>
+  <header class="article_header noBorder"></header>
+    <footer class="article_footer noBorder"></footer>
+    </article>
+    <div class="topDiv"><a href="#home" class="topButton blockCenter">Top</a></div>
+  </section>
+  <!-- howToFindUs & getInTouch -->
+  <footer>
+  <p style="font-size:0.9em;">Copyright &copy;2012 <span style="color:#7AAC37">T&J</span>. All rights reserved</p>
+  </footer>
+</div>
+<!-- end #container -->
+</body>
+</html>
