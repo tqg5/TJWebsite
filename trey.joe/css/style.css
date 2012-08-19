@@ -107,13 +107,14 @@ nav ul li a:hover {
 	height:217px;
 }
 
-#aboutUs ul, ul li{
+#aboutUsUl li {
 	position:relative;
 	display:inline;
 	float:left;
 	width:300px;
 	height:100px;
 }
+
 
 #aboutUs blockquote {
 	font-style:italic;
